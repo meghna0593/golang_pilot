@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-// Deck type behaves like a Deck class or maybe a struct(?)
+// Deck type behaves like a Deck class or maybe a struct in Python (?)
 
 // Create a new type of 'deck'
 // which is a slice of strings
@@ -30,7 +30,7 @@ func newDeck() deck {
 }
 
 // loop through the deck of cards and print them
-func (d deck) print() { //receiver - by convention a receiver will have 1 or 2 abbr. chars
+func (d deck) print() { //receiver - by convention a receiver will have 1 or 2 abbr. chars; here d is a receiver of type deck
 	for i, card := range d { //in python d would've been self
 		fmt.Println(i, card)
 	}
