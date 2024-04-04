@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-// Deck type behaves like a Deck class or maybe a struct in Python (?)
+// Deck type in Go behaves similar to a Deck class in Python
 
 // Create a new type of 'deck'
 // which is a slice of strings
