@@ -2,10 +2,16 @@ package main
 
 import "fmt"
 
+type contactInfo struct {
+	email   string
+	zipCode string
+}
+
 // Structs in Go is similar to a dictionary/class object(?) in Python
 type person struct {
 	firstName string
 	lastName  string
+	contact   contactInfo
 }
 
 func main() {
