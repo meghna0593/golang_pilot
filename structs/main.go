@@ -33,8 +33,12 @@ func main() {
 	}
 
 	// using pointers
-	person2Pointer := &person2
-	person2Pointer.updateFirstName("Prison Mike")
+	// person2Pointer := &person2
+	// person2Pointer.updateFirstName("Prison Mike")
+	// person2.print()
+
+	// using pointers with lesser lines of code; shortcut
+	person2.updateFirstName("Prison Mike")
 	person2.print()
 }
 
