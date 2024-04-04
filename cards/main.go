@@ -5,7 +5,7 @@ func main() {
 	// card := "Ace of Spades" // Go compiler will figure out that card will contain a string
 	// card = "Five of Diamonds"
 
-	// printState() // Files in the same package need not be imported
+	// Files in the same package need not be imported
 
 	// card := newCard()
 	// fmt.Println(card)
