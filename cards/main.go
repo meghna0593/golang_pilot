@@ -40,7 +40,8 @@ func main() {
 	// cards.print()
 
 	// Shuffle deck
-	cards.shuffle()
+	// cards.shuffle()
+	cards.shuffle_v2()
 	cards.print()
 
 }

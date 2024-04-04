@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 
 	// "io/ioutil"
 	"os"
@@ -71,9 +72,21 @@ func newDeckFromFile(filename string) deck {
 
 }
 
-func (d deck) shuffle() {
+func (d deck) shuffle() { // using rand.Intn
+	// rand.Seed(0) // deprecated; Providing a seed of the same value will end up with the same random sequence
 	for idx := range d {
 		newPosition := rand.Intn(len(d) - 1) //psuedo random generator
+		d[idx], d[newPosition] = d[newPosition], d[idx]
+
+	}
+}
+
+func (d deck) shuffle_v2() { // using rand.NewSource
+	source := rand.NewSource(time.Now().UnixNano()) // using current time as the seed value
+	r := rand.New(source)
+
+	for idx := range d {
+		newPosition := r.Intn(len(d) - 1)
 		d[idx], d[newPosition] = d[newPosition], d[idx]
 
 	}

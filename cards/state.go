@@ -1,7 +1,7 @@
-package main
+// package main
 
-import "fmt"
+// import "fmt"
 
-func printState() {
-	fmt.Println("Cali")
-}
+// func printState() {
+// 	fmt.Println("Cali")
+// }
