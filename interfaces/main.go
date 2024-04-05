@@ -10,6 +10,7 @@ type englishBot struct{}
 type spanishBot struct{}
 
 func main() {
+	// eb and sb are promoted to bot type since they're both using getGreeting method that returns a string
 	eb := englishBot{}
 	sb := spanishBot{}
 
