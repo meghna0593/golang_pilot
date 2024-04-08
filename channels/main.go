@@ -25,6 +25,11 @@ func main() {
 	// for i := 0; i < len(urls); i++ {
 	// 	fmt.Println(<-c)
 	// }
+
+	// infinite loop
+	for {
+		go checkUrl(<-c, c) // go routine being called repeatedly
+	}
 }
 
 func checkUrl(url string, c chan string) {
@@ -32,9 +37,11 @@ func checkUrl(url string, c chan string) {
 	_, err := http.Get(url)
 	if err != nil {
 		fmt.Println(url, "might be down!")
-		c <- "Might be down"
+		// c <- "Might be down"
+		c <- url
 		return
 	}
 	fmt.Println(url, "is up")
-	c <- "Yes, it's up!"
+	// c <- "Yes, it's up!"
+	c <- url
 }
