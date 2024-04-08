@@ -19,8 +19,12 @@ func main() {
 
 	for _, url := range urls {
 		go checkUrl(url, c) // go routine
+		fmt.Println(<-c)
 	}
-	fmt.Println(<-c)
+
+	// for i := 0; i < len(urls); i++ {
+	// 	fmt.Println(<-c)
+	// }
 }
 
 func checkUrl(url string, c chan string) {
