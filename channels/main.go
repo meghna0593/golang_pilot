@@ -27,8 +27,13 @@ func main() {
 	// }
 
 	// infinite loop
-	for {
-		go checkUrl(<-c, c) // go routine being called repeatedly
+	// for {
+	// 	go checkUrl(<-c, c) // go routine being called repeatedly
+	// }
+
+	// Alternate Syntax
+	for l := range c { // loop through everytime a channel emits a value
+		go checkUrl(l, c)
 	}
 }
 
