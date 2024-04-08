@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 
 	for _, url := range urls {
 		go checkUrl(url, c) // go routine
-		fmt.Println(<-c)
+		// fmt.Println(<-c)
 	}
 
 	// for i := 0; i < len(urls); i++ {
@@ -33,12 +34,23 @@ func main() {
 
 	// Alternate Syntax
 	for l := range c { // loop through everytime a channel emits a value
-		go checkUrl(l, c)
+		// time.Sleep(5 * time.Second) // pause for 5 seconds // main routine is getting paused here
+		// go checkUrl(l, c)
+		// go func() { //function literal
+		// 	time.Sleep(5 * time.Second)
+		// 	checkUrl(l, c)
+		// }()
+
+		go func(link string) { // recommended; 'l' string is copied in memory, Go routine has access to that copy instead of pointing to the original value of l
+			time.Sleep(5 * time.Second)
+			checkUrl(link, c)
+		}(l)
 	}
 }
 
 func checkUrl(url string, c chan string) {
 	// _, err := http.Get(url) // blocking call; add Go routines
+	// time.Sleep(5 * time.Second) // go routine is waiting here; checkUrl should typically jusrt execute, it doesn't make sense for it to wait. We need something between main and checkUrl to wait
 	_, err := http.Get(url)
 	if err != nil {
 		fmt.Println(url, "might be down!")
